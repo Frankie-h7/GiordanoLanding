@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iTeck - The Tech Solution Ever</title>
+    <style>
+        :root {
+            --primary-color: #ff6bb1;
+            --secondary-color: #1a1e3a;
+            --light-bg: #f8f9fa;
+            --dark-text: #1a1e3a;
+            --light-text: #ffffff;
+            --gray-text: #6c757d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Navigation */
+        .navbar {
+            padding: 20px 0;
+            background-color: var(--light-bg);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+        }
+        
+        .logo-text {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-left: 5px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin: 0 15px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+            z-index: 1;
+            border-radius: 8px;
+        }
+        
+        .dropdown-content a {
+            color: var(--dark-text);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .nav-button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        
+        .nav-button:hover {
+            background-color: #e05a96;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .hero-content {
+            width: 50%;
+            z-index: 1;
+        }
+        
+        .hero-image {
+            width: 45%;
+            z-index: 1;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            left: 50px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .social-links a {
+            display: block;
+            margin: 10px 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--dark-text);
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-5px);
+            color: var(--primary-color);
+        }
+        
+        h1 {
+            font-size: 52px;
+            color: var(--dark-text);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: var(--gray-text);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            background-color: #e05a96;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--dark-text);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            font-size: 18px;
+            color: var(--gray-text);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--light-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary-color);
+            font-size: 24px;
+        }
+        
+        .service-card h3 {
+            font-size: 22px;
+            color: var(--dark-text);
+            margin-bottom: 15px;
+        }
+        
+        .service-card p {
+            font-size: 16px;
+            color: var(--gray-text);
+            line-height: 1.6;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+        }
+        
+        .about .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .about-image {
+            width: 45%;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-content {
+            width: 50%;
+        }
+        
+        .about-content h2 {
+            font-size: 36px;
+            color: var(--dark-text);
+            margin-bottom: 20px;
+        }
+        
+        .about-content p {
+            font-size: 18px;
+            color: var(--gray-text);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        /* Portfolio Section */
+        .portfolio {
+            padding: 80px 0;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .portfolio-item {
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            height: 250px;
+        }
+        
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 30, 58, 0.8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .portfolio-overlay h3 {
+            color: white;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .portfolio-overlay p {
+            color: var(--primary-color);
+            font-size: 14px;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+        }
+        
+        .contact-form {
+            background-color: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-text);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            background-color: #e05a96;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .footer-about p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #bbb;
+            margin-bottom: 20px;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .footer-social a {
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .footer-social a:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .footer-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-title:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 15px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .footer-contact li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            color: #bbb;
+            font-size: 15px;
+        }
+        
+        .footer-contact li i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: #bbb;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .services-grid,
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .hero .container,
+            .about .container {
+                flex-direction: column;
+            }
+            
+            .hero-content,
+            .hero-image,
+            .about-content,
+            .about-image {
+                width: 100%;
+                margin-bottom: 40px;
+            }
+            
+            .social-links {
+                position: static;
+                flex-direction: row;
+                justify-content: center;
+                margin-bottom: 30px;
+                transform: none;
+            }
+            
+            .social-links a {
+                margin: 0 10px;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .services-grid,
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 38px;
+            }
+            
+            .about-content h2,
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="/api/placeholder/120/40" alt="iTeck Logo">
+                <span class="logo-text">iTeck</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Portfolio</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Blog</a></li>
+                <li class="dropdown">
+                    <a href="#">Shop</a>
+                    <div class="dropdown-content">
+                        <a href="#">Products</a>
+                        <a href="#">Categories</a>
+                        <a href="#">Special Offers</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Restricted content</a>
+                    <div class="dropdown-content">
+                        <a href="#">Members Area</a>
+                        <a href="#">Premium Content</a>
+                        <a href="#">Downloads</a>
+                    </div>
+                </li>
+            </ul>
+            
+            <a href="#" class="nav-button">Privacy Policy</a>
+            
+            <div class="mobile-toggle">
+                ☰
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Sono Francesco Pio Giordano</h1>
+                <p class="subtitle">In questa pagina web, puoi navigare tra le varie aree del sito, e conoscermi meglio, sia come persona che come figura professionale.</p>
+                <a href="#" class="cta-button">Per saperne di più!?!</a>
+            </div>
+            
+            <div class="hero-image">
+                <img src="/api/placeholder/500/600" alt="Francesco Pio Giordano">
+            </div>
+        </div>
+        
+        <div class="social-links">
+            <a href="#"><span>in</span></a>
+            <a href="#"><span>ig</span></a>
+            <a href="#"><span>dr</span></a>
+            <a href="#"><span>be</span></a>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>I Miei Servizi</h2>
+                <p>Offro soluzioni tecnologiche personalizzate per aiutarti a raggiungere i tuoi obiettivi digitali.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <span>💻</span>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>Creo siti web moderni, reattivi e facili da usare che si adattano perfettamente alle esigenze del tuo business.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <span>🎨</span>
+                    </div>
+                    <h3>UI/UX Design</h3>
+                    <p>Progetto interfacce intuitive e attraenti che migliorano l'esperienza dell'utente e aumentano la conversione.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <span>📱</span>
+                    </div>
+                    <h3>App Development</h3>
+                    <p>Sviluppo applicazioni mobile innovative per iOS e Android che si distinguono nel mercato competitivo di oggi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <div class="about-image">
+                <img src="/api/placeholder/500/400" alt="Chi Sono">
+            </div>
+            
+            <div class="about-content">
+                <h2>Chi Sono</h2>
+                <p>Sono Francesco Pio Giordano, un appassionato professionista tech con anni di esperienza nel settore digitale. La mia missione è fornire soluzioni tecnologiche innovative che aiutino le aziende a crescere nell'era digitale.</p>
+                <p>Con un background in informatica e design, combino competenze tecniche e creative per offrire prodotti digitali che non solo funzionano perfettamente, ma sono anche belli da vedere e facili da usare.</p>
+                <a href="#" class="cta-button">Scopri di più</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Portfolio Section -->
+    <section class="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>Il Mio Portfolio</h2>
+                <p>Esplora alcuni dei miei progetti più recenti e scopri come ho aiutato i miei clienti a raggiungere i loro obiettivi.</p>
+            </div>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="/api/placeholder/400/300" alt="Progetto 1">
+                    <div class="portfolio-overlay">
+                        <h3>E-commerce Website</h3>
+                        <p>Web Development</p>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <img src="/api/placeholder/400/300" alt="Progetto 2">
+                    <div class="portfolio-overlay">
+                        <h3>Mobile App Design</h3>
+                        <p>UI/UX Design</p>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <img src="/api/placeholder/400/300" alt="Progetto 3">
+                    <div class="portfolio-overlay">
+                        <h3>Fitness Tracker App</h3>
+                        <p>App Development</p>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <img src="/api/placeholder/400/300" alt="Progetto 4">
+                    <div class="portfolio-overlay">
+                        <h3>Restaurant Website</h3>
+                        <p>Web Development</p>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <img src="/api/placeholder/400/300" alt="Progetto 5">
+                    <div class="portfolio-overlay">
+                        <h3>Travel Blog</h3>
+                        <p>Content Creation</p>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <img src="/api/placeholder/400/300" alt="Progetto 6">
+                    <div class="portfolio-overlay">
+                        <h3>Smart Home Dashboard</h3>
+                        <p>IoT Design</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contattami</h2>
+                <p>Hai un progetto in mente? Contattami per discutere di come possiamo lavorare insieme.</p>
+            </div>
+            
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Nome</label>
+                        <input type="text" id="name" class="form-control" placeholder="Il tuo nome">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" placeholder="La tua email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Oggetto</label>
+                        <input type="text" id="subject" class="form-control" placeholder="Oggetto del messaggio">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Messaggio</label>
+                        <textarea id="message" class="form-control" placeholder="Il tuo messaggio"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Invia Messaggio</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <a href="#" class="footer-logo">iTeck</a>
+                    <p>Soluzioni tecnologiche innovative per aiutare le aziende a crescere nell'era digitale. Offriamo servizi di web development, UI/UX design e app development.</p>
+                    <div class="footer-social">
+                        <a href="#"><span>in</span></a>
+                        <a href="#"><span>ig</span></a>
+                        <a href="#"><span>dr</span></a>
+                        <a href="#"><span>be</span></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links-col">
+                    <h3 class="footer-title">Links Rapidi</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Portfolio</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links-col">
+                    <h3 class="footer-title">Servizi</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">UI/UX Design</a></li>
+                        <li><a href="#">App Development</a></li>
+                        <li><a href="#">E-commerce</a></li>
+                        <li><a href="#">Consulenza IT</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links-col">
+                    <h3 class="footer-title">Contatti</h3>
+                    <ul class="footer-contact">
+                        <li><i>📍</i> Milano, Italia</li>
+                        <li><i>📧</i> info@iteck.com</li>
+                        <li><i>📱</i> +39 123 456 7890</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 iTeck. Tutti i diritti riservati.
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile Navigation Toggle
+        document.querySelector('.mobile-toggle').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '80px';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.backgroundColor = '#fff';
+                navLinks.style.padding = '20px';
+                navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+            }
+        });
+        
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Animation on Scroll (simple version)
+        function checkVisible() {
+            const elements = document.querySelectorAll('.service-card, .portfolio-item');
+            const windowHeight = window.innerHeight;
+            
+            elements.forEach(element => {
+                const position = element.getBoundingClientRect();
+                
+                // Check if element is in viewport
+                if(position.top < windowHeight * 0.9 && position.bottom >= 0) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+        
+        // Set initial states
+        document.querySelectorAll('.service-card, .portfolio-item').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+        
+        // Run on load and scroll
+        window.addEventListener('load', checkVisible);
+        window.addEventListener('scroll',
