@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NatureBite - Sostenibilità Alimentare Autentica</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variabili CSS per la palette colori */
+        :root {
+            --primary-color: #2e7d32; /* Verde scuro */
+            --secondary-color: #81c784; /* Verde chiaro */
+            --accent-color: #ff8f00; /* Arancione caldo */
+            --background-color: #f9f7f3; /* Beige chiaro */
+            --text-color: #333333; /* Grigio scuro */
+            --light-text: #ffffff; /* Bianco */
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            overflow-x: hidden;
+        }
+
+        /* Stili di base */
+        h1, h2, h3, h4, h5 {
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        h3 {
+            font-size: 1.6rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .section-alt {
+            background-color: #f0f7f0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Bottoni e CTA */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+            color: var(--light-text);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+        }
+
+        #shop{
+            display: inline-block;
+            padding: 1px 28px;
+        }
+
+        /* Header e navigazione */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+            background-color: rgba(255, 255, 255, 0.98);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            font-weight: 600;
+            position: relative;
+        }
+
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+       .hero {
+            padding-top: 150px;
+            padding-bottom: 100px;
+         /* background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('image/PianetaGreen.jpg') */
+            center/cover no-repeat;
+            color: var(--light-text);
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        } 
+
+        /* Video Hero Styles */
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.video-background video {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/*.hero {
+    position: relative;
+    padding-top: 150px;
+    padding-bottom: 100px;
+    color: var(--light-text);
+    text-align: center;
+    height: 100vh; /* Opzionale: per fare hero a tutta altezza /
+    min-height: 600px; /* Altezza minima /
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+} */
+
+/* -- Resto del codice -- */
+
+        .hero h1 {
+            margin-bottom: 1.5rem;
+            font-size: 3.5rem;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* About Us / Mission Section */
+        .mission-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .mission-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .mission-image {
+            flex: 1;
+            min-width: 300px;
+            box-shadow: var(--shadow);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            color: var(--accent-color);
+            transform: scale(1.1);
+        }
+
+        /* Anti-Greenwashing Section */
+        .greenwashing {
+            background-color: #eaf5ea;
+            border-radius: 10px;
+            padding: 40px;
+            margin: 60px 0;
+            position: relative;
+        }
+
+        .greenwashing::before {
+            content: '!';
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent-color);
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Testimonials Section */
+        .testimonials-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial {
+            min-width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .testimonial-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .testimonial-content::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50px;
+            width: 30px;
+            height: 30px;
+            background-color: white;
+            transform: rotate(45deg);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+
+        .testimonial-author img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+
+        .testimonial-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .testimonial-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .testimonial-btn:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* Impact Numbers */
+        .impact-numbers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .impact-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .impact-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        /* Filiera Sostenibile */
+        .sustainable-chain {
+            position: relative;
+            padding: 80px 0;
+        }
+
+        .chain-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            position: relative;
+            margin-top: 60px;
+        }
+
+        .chain-steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--secondary-color);
+            z-index: 1;
+        }
+
+        .chain-step {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 160px;
+            text-align: center;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        /* Pricing Plans */
+        .pricing-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .pricing-plan {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            padding: 40px 30px;
+            text-align: center;
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-plan:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .popular-tag {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 5px 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transform: translateX(30%) translateY(0%) rotate(45deg);
+            transform-origin: top left;
+            width: 150px;
+            text-align: center;
+        }
+
+        .plan-name {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .plan-price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #666;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .plan-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/600') center/cover no-repeat;
+            color: white;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #f4f4f4;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Animazioni */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Media Queries */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .mission-container {
+                flex-direction: column;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 40px;
+                transition: all 0.3s ease;
+                z-index: 999;
+            }
+
+            nav ul.active {
+                left: 0;
+            }
+
+            nav ul li {
+                margin: 15px 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .impact-numbers {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .chain-steps::before {
+                display: none;
+            }
+
+            .chain-steps {
+                flex-direction: column;
+                align-items: center;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .section {
+                padding: 50px 0;
+            }
+
+            .greenwashing {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">Nature<span>Biological</span></a>
+            <div class="mobile-toggle" id="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#mission" class="scroll-link">Chi Siamo</a></li>
+                    <li><a href="#impegno" class="scroll-link">Il Nostro Impegno</a></li>
+                    <li><a href="#filiera" class="scroll-link">Filiera</a></li>
+                    <li><a href="#prodotti" class="scroll-link">Prodotti</a></li>
+                    <li><a href="#contatti" class="scroll-link">Contatti</a></li>
+                    <li><a href="#" id="shop" class="btn btn-secondary">Shop</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+<!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="video-background">
+        <video autoplay muted loop playsinline>
+            <source src="image/Jet-Green.mp4" type="video/mp4">
+            <!-- Aggiungi altri formati video per compatibilità -->
+            <source src="video/tuo-video.webm" type="video/webm">
+            Il tuo browser non supporta il tag video.
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+    <div class="container hero-content">
+        <h1 class="fade-in">Nutrire il pianeta quanto il tuo corpo</h1>
+        <p class="fade-in">Scopri come i nostri snack e bevande non solo nutrono il tuo corpo con ingredienti biologici, ma sostengono anche pratiche agricole rigenerative che nutrono il nostro pianeta.</p>
+        <a href="#mission" class="btn fade-in scroll-link">Scopri la nostra missione</a>
+    </div>
+</section>
+
+    <!-- Mission Section -->
+    <section class="section" id="mission">
+        <div class="container">
+            <h2 class="text-center fade-in">La Nostra Missione</h2>
+            <div class="mission-container">
+                <div class="mission-content fade-in">
+                    <h3>Sostenibilità autentica, dal campo alla tavola</h3>
+                    <p>In NatureBite crediamo che un'alimentazione sana non possa prescindere da un pianeta sano. La nostra missione è creare snack e bevande deliziosi che rispettino sia il tuo benessere che quello dell'ambiente.</p>
+                    <p>Ogni nostro prodotto è frutto di un impegno concreto: ingredienti biologici coltivati con pratiche rigenerative, packaging eco-compatibile e una filiera trasparente che rispetta tutti i suoi attori, dalla terra al consumatore.</p>
+                    <p>Non ci limitiamo a parlare di sostenibilità: la pratichiamo in ogni fase della nostra attività, con obiettivi misurabili e risultati verificabili.</p>
+                </div>
+                <div class="mission-image fade-in">
+                    <img src="image/Coltivazioni-biologiche-NatureBite.png" alt="Coltivazioni biologiche NatureBite">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features / Benefits Section -->
+    <section class="section section-alt" id="impegno">
+        <div class="container">
+            <h2 class="text-center fade-in">Il Nostro Impegno Concreto</h2>
+            <p class="text-center fade-in">Azioni reali per un impatto positivo sul pianeta e sulle persone</p>
+            
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Agricoltura Rigenerativa</h3>
+                    <p>Collaboriamo con agricoltori che adottano pratiche di agricoltura rigenerativa, migliorando la salute del suolo e aumentando la biodiversità. Questo significa più carbonio sequestrato nel terreno e meno emissioni di CO₂.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <h3>Packaging Sostenibile</h3>
+                    <p>Il 95% del nostro packaging è già completamente compostabile o riciclabile, e stiamo lavorando per raggiungere il 100% entro il 2026. Utilizziamo materiali innovativi a base di amido di mais e altri prodotti vegetali.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>Equità Sociale</h3>
+                    <p>Garantiamo un prezzo equo ai nostri fornitori e agricoltori, investendo nelle comunità locali attraverso progetti educativi e di sviluppo. Crediamo che la vera sostenibilità debba includere il benessere di tutte le persone coinvolte.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h3>Gestione Responsabile dell'Acqua</h3>
+                    <p>Abbiamo ridotto del 40% il consumo di acqua nei nostri processi produttivi negli ultimi 5 anni. Inoltre, sosteniamo progetti di conservazione delle risorse idriche nelle regioni dove operiamo.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Zero Sprechi</h3>
+                    <p>Seguiamo un modello di economia circolare, riutilizzando i sottoprodotti della nostra produzione come compost o come ingredienti per altre linee di prodotti. Il nostro obiettivo è zero rifiuti in discarica entro il 2027.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Certificazioni Verificate</h3>
+                    <p>Tutti i nostri prodotti sono certificati biologici, e siamo tra le prime aziende in Italia a ottenere la certificazione B Corp. Ci sottoponiamo regolarmente ad audit indipendenti per verificare le nostre pratiche.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Anti-Greenwashing Section -->
+    <section class="section">
+        <div class="container">
+            <div class="greenwashing fade-in">
+                <h3 class="text-center">Stop al Greenwashing: La Nostra Trasparenza</h3>
+                <p>Il <strong>greenwashing</strong> è la pratica ingannevole di presentare un'immagine ecologica non corrispondente alla realtà aziendale. In NatureBite ci impegniamo a evitare questa pratica attraverso:</p>
+                
+                <ul style="margin-left: 20px; margin-bottom: 20px;">
+                    <li><strong>Obiettivi misurabili e verificabili</strong>: pubblichiamo annualmente i nostri progressi verso i target di sostenibilità</li>
+                    <li><strong>Certificazioni di terze parti</strong>: non ci auto-certifichiamo, ma ci affidiamo a enti indipendenti</li>
+                    <li><strong>Trasparenza nella comunicazione</strong>: condividiamo anche le sfide che stiamo affrontando, non solo i successi</li>
+                    <li><strong>Verificabilità delle informazioni</strong>: tutti i dati che condividiamo sono tracciabili e verificabili</li>
+                </ul>
+                
+                <p>Non ci limitiamo a dichiarazioni vaghe come "eco-friendly" o "naturale", ma forniamo sempre dati specifici e contesto. La nostra sostenibilità è un percorso di miglioramento continuo, non un punto di arrivo da utilizzare come slogan.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Numbers -->
+    <section class="section section-alt">
+        <div class="container">
+            <h2 class="text-center fade-in">Il Nostro Impatto in Numeri</h2>
+            <p class="text-center fade-in">Risultati misurabili del nostro impegno per la sostenibilità</p>
+            
+            <div class="impact-numbers">
+                <div class="impact-item fade-in">
+                    <div class="impact-number" data-count="1500">0</div>
+                    <p>Tonnellate di CO₂ evitate all'anno</p>
+                </div>
+                
+                <div class="impact-item fade-in">
+                    <div class="impact-number" data-count="85">0</div>
+                    <p>% di energia da fonti rinnovabili</p>
+                </div>
+                
+                <div class="impact-item fade-in">
+                    <div class="impact-number" data-count="120">0</div>
+                    <p>Agricoltori supportati</p>
+                </div>
+                
+                <div class="impact-item fade-in">
+                    <div class="impact-number" data-count="40">0</div>
+                    <p>% Riduzione consumo acqua</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filiera Sostenibile -->
+    <section class="section" id="filiera">
+        <div class="container">
+            <h2 class="text-center fade-in">La Nostra Filiera Sostenibile</h2>
+            <p class="text-center fade-in">Un percorso tracciabile e trasparente, dal campo alla tua tavola</p>
+            
+            <div class="chain-steps">
+                <div class="chain-step fade-in">
+                    <div class="step-number">1</div>
+                    <h4>Coltivazione</h4>
+                    <p>Agricoltori selezionati che praticano agricoltura biologica e rigenerativa</p>
+                </div>
+                
+                <div class="chain-step fade-in">
+                    <div class="step-number">2</div>
+                    <h4>Raccolta</h4>
+                    <p>Raccolta manuale e sostenibile degli ingredienti al momento ottimale</p>
+                </div>
+                
+                <div class="chain-step fade-in">
+                    <div class="step-number">3</div>
+                    <h4>Trasformazione</h4>
+                    <p>Lavorazione minima per preservare nutrienti e sapori naturali</p>
+                </div>
+                
+                <div class="chain-step fade-in">
+                    <div class="step-number">4</div>
+                    <h4>Confezionamento</h4>
+                    <p>Packaging eco-compatibile e materiali compostabili</p>
+                </div>
+                
+                <div class="chain-step fade-in">
+                    <div class="step-number">5</div>
+                    <h4>Distribuzione</h4>
+                    <p>Logistica ottimizzata per ridurre l'impronta di carbonio</p>
+                </div>
+
+                <!-- QUI C'è stato uno STACCO-->
+                 <!-- Questa è la parte errata nel codice originale -->
+<div class="chain-step fade-in">
+    <div class="step-number">5</div>
+    <h4>Distribuzione</h4>
+    <p>Logistica ottimizzata per ridurre l'impronta di carbonio</p>
+</div>
+
+<!-- QUI C'è stato uno STACCO-->
+
+<!-- Ecco come dovrebbe essere corretto -->
+            </div> <!-- Chiusura di chain-steps -->
+        </div> <!-- Chiusura di container -->
+    </section> <!-- Chiusura della sezione filiera -->
+
+    <!-- Products Section -->
+    <section class="section section-alt" id="prodotti">
+        <!-- Il resto della sezione prodotti è corretto -->
+
+                <!-- QUI C'è stato uno STACCO-->
+
+    <!-- Products Section -->
+    <section class="section section-alt" id="prodotti">
+        <div class="container">
+            <h2 class="text-center fade-in">I Nostri Prodotti</h2>
+            <p class="text-center fade-in">Snack e bevande biologiche che rispettano il pianeta</p>
+            
+            <div class="pricing-container">
+                <div class="pricing-plan fade-in">
+                    <h3 class="plan-name">Linea Frutta</h3>
+                    <div class="plan-price">€4.99 <span>/ confezione</span></div>
+                    <ul class="plan-features">
+                        <li>100% frutta biologica</li>
+                        <li>Senza zuccheri aggiunti</li>
+                        <li>Essiccata a bassa temperatura</li>
+                        <li>Packaging compostabile</li>
+                        <li>Filiera tracciata</li>
+                    </ul>
+                    <a href="#" class="btn">Acquista ora</a>
+                </div>
+                
+                <div class="pricing-plan fade-in">
+                    <div class="popular-tag">Più venduto</div>
+                    <h3 class="plan-name">Mix Energia</h3>
+                    <div class="plan-price">€6.99 <span>/ confezione</span></div>
+                    <ul class="plan-features">
+                        <li>Frutta secca e semi biologici</li>
+                        <li>Alto contenuto proteico</li>
+                        <li>Fonte di omega-3</li>
+                        <li>Packaging riciclabile</li>
+                        <li>Supporta agricoltura rigenerativa</li>
+                    </ul>
+                    <a href="#" class="btn">Acquista ora</a>
+                </div>
+                
+                <div class="pricing-plan fade-in">
+                    <h3 class="plan-name">Bevande Vegetali</h3>
+                    <div class="plan-price">€3.99 <span>/ bottiglia</span></div>
+                    <ul class="plan-features">
+                        <li>Base avena o riso biologici</li>
+                        <li>Senza additivi artificiali</li>
+                        <li>Produzione a basso impatto</li>
+                        <li>Bottiglia in vetro riutilizzabile</li>
+                        <li>Coltivazione a risparmio idrico</li>
+                    </ul>
+                    <a href="#" class="btn">Acquista ora</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="text-center fade-in">Cosa Dicono i Nostri Clienti</h2>
+            <p class="text-center fade-in">Persone reali che hanno scelto la nostra sostenibilità</p>
+            
+            <div class="testimonials-container fade-in">
+                <div class="testimonial-slider" id="testimonial-slider">
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <p>"Ho scoperto NatureBite cercando snack biologici ma ho trovato molto di più. Mi piace sapere che ogni volta che acquisto i loro prodotti sto contribuendo a supportare pratiche agricole che rigenerano il suolo anziché impoverirlo."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="image/Martina.jpg" alt="Testimonial 1">
+                            <div>
+                                <h4>Martina B.</h4>
+                                <p>Cliente da 2 anni</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <p>"Ciò che apprezzo di più è la loro trasparenza. Posso letteralmente tracciare da dove provengono gli ingredienti dei miei snack preferiti! E il sapore è fantastico, dimostra che sostenibilità e gusto possono andare di pari passo."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="image/Marco.jpg" alt="Testimonial 2">
+                            <div>
+                                <h4>Marco L.</h4>
+                                <p>Cliente da 1 anno</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <p>"Come dietista, spesso consiglio NatureBite ai miei pazienti. Non solo per gli ingredienti di qualità, ma anche per il loro impegno verso un'alimentazione che sia sostenibile anche per il pianeta. È un approccio olistico alla nutrizione che condivido pienamente."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="image/Elena.jpg" alt="Testimonial 3">
+                            <div>
+                                <h4>Dr.ssa Elena F.</h4>
+                                <p>Dietista Nutrizionista</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-controls">
+                    <button class="testimonial-btn" id="prev-testimonial">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <button class="testimonial-btn" id="next-testimonial">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content fade-in">
+                <h2>Unisciti al Movimento per un'Alimentazione Sostenibile</h2>
+                <p>Ogni scelta alimentare ha un impatto. Scegli di nutrire il tuo corpo e il pianeta con prodotti che rispettano entrambi.</p>
+                <div style="margin-top: 30px;">
+                    <a href="#" class="btn">Esplora i nostri prodotti</a>
+                    <a href="#" class="btn btn-secondary" style="margin-left: 15px;">Scopri la nostra filiera</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contatti">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>NatureBite</h3>
+                    <p>Nutriamo il pianeta quanto il tuo corpo con snack e bevande biologiche da agricoltura rigenerativa.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Collegamenti Rapidi</h3>
+                    <ul class="footer-links">
+                        <li><a href="#mission">Chi Siamo</a></li>
+                        <li><a href="#impegno">Il Nostro Impegno</a></li>
+                        <li><a href="#filiera">Filiera Sostenibile</a></li>
+                        <li><a href="#prodotti">I Nostri Prodotti</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contatti</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Via Verde 123, Milano</li>
+                        <li><i class="fas fa-phone"></i> +39 02 1234567</li>
+                        <li><i class="fas fa-envelope"></i> info@naturebite.it</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Iscriviti per ricevere aggiornamenti sui nostri prodotti e iniziative sostenibili</p>
+                    <form>
+                        <input type="email" placeholder="La tua email" style="padding: 10px; width: 100%; margin-bottom: 10px; border-radius: 5px; border: none;">
+                        <button type="submit" class="btn" style="width: 100%;">Iscriviti</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 NatureBite. Tutti i diritti riservati. <a href="#">Privacy Policy</a> | <a href="#">Termini di Servizio</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Funzione per lo scroll fluido ai link interni
+        document.querySelectorAll('.scroll-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Menu mobile toggle
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        
+        mobileToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            const icon = this.querySelector('i');
+            
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Animazione elementi al caricamento e allo scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        function checkFade() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+        
+        // Controlla gli elementi all'inizio
+        window.addEventListener('load', checkFade);
+        
+        // Controlla gli elementi quando si scrolla
+        window.addEventListener('scroll', checkFade);
+        
+        // Slider testimonial
+        const slider = document.getElementById('testimonial-slider');
+        const prevBtn = document.getElementById('prev-testimonial');
+        const nextBtn = document.getElementById('next-testimonial');
+        let slideIndex = 0;
+        const testimonials = document.querySelectorAll('.testimonial');
+        
+        function showSlide(index) {
+            if (index >= testimonials.length) {
+                slideIndex = 0;
+            } else if (index < 0) {
+                slideIndex = testimonials.length - 1;
+            } else {
+                slideIndex = index;
+            }
+            
+            slider.style.transform = `translateX(-${slideIndex * 100}%)`;
+        }
+        
+        prevBtn.addEventListener('click', () => {
+            showSlide(slideIndex - 1);
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            showSlide(slideIndex + 1);
+        });
+        
+        // Auto scroll testimonial ogni 5 secondi
+        setInterval(() => {
+            showSlide(slideIndex + 1);
+        }, 5000);
+        
+        // Animazione numeri impact
+        const impactNumbers = document.querySelectorAll('.impact-number');
+        let animated = false;
+        
+        function animateNumbers() {
+            if (animated) return;
+            
+            const impactSection = document.querySelector('.impact-numbers');
+            const sectionTop = impactSection.getBoundingClientRect().top;
+            
+            if (sectionTop < window.innerHeight - 100) {
+                impactNumbers.forEach(number => {
+                    const target = parseInt(number.getAttribute('data-count'));
+                    let count = 0;
+                    const duration = 2000; // 2 secondi
+                    const increment = target / (duration / 16);
+                    
+                    const counter = setInterval(() => {
+                        count += increment;
+                        
+                        if (count >= target) {
+                            number.textContent = target;
+                            clearInterval(counter);
+                        } else {
+                            number.textContent = Math.floor(count);
+                        }
+                    }, 16);
+                });
+                
+                animated = true;
+            }
+        }
+        
+        window.addEventListener('scroll', animateNumbers);
+    </script>
+</body>
+</html>
