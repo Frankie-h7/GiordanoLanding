@@ -1,6 +1,6 @@
-# GiordanoLanding 📱
+# h7Landing 📱
 
-**GiordanoLanding** è una landing page semplice, moderna ed efficace progettata per indirizzare gli utenti verso la sezione **Shop** di un eCommerce dedicato alla vendita di **iPhone**. Il progetto è stato sviluppato con l’obiettivo di aumentare la conversione, fornendo un’interfaccia pulita, responsive e accattivante.
+**h7Landing** è una landing page semplice, moderna ed efficace progettata per indirizzare gli utenti verso la sezione **Shop** di un eCommerce dedicato alla vendita di **iPhone**. Il progetto è stato sviluppato con l’obiettivo di aumentare la conversione, fornendo un’interfaccia pulita, responsive e accattivante.
 
 ## 🔗 Link al progetto online
 
